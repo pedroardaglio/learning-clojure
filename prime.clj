@@ -1,3 +1,5 @@
+;; Check if a number is prime
+
 (defn prime_aux [x y]
     (if (= y 1)
         true
