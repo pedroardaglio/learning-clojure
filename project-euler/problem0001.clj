@@ -11,9 +11,9 @@
     ([x]
         (cond
             (= x 0) (+ x 0)
-            (= (mod x 3) 0) (+ (sum_multiples_3_5 (- x 1)) x)
-            (= (mod x 5) 0) (+ (sum_multiples_3_5 (- x 1)) x)
-            :else (sum_multiples_3_5 (- x 1))
+            (= (mod x 3) 0) (+ (sum_multiples_3_5 (inc x)) x)
+            (= (mod x 5) 0) (+ (sum_multiples_3_5 (inc x)) x)
+            :else (sum_multiples_3_5 (inc x))
         )
     )
 )
