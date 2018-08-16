@@ -1,0 +1,1 @@
+(fn [x y] (first (drop y x)))
