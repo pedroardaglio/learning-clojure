@@ -7,7 +7,7 @@
             true
             (if (= (mod x y) 0)
                 false
-                (do (prime x (- y 1)))
+                (do (prime x (dec y)))
             )
         )
     )
