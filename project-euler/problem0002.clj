@@ -9,9 +9,14 @@
 ; By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
 
-(defn fibo
-    ([] (fibo 10))
-    ([x]
-        
+(defn fib_even_sum
+    ([] (fib_even_sum 1))
+    ([a] (fib_even_sum a (+ a 1) 0))
+    ([a b sum]
+        ; (print a " ")
+        (if (> a 4000000)
+            sum
+            (fib_even_sum b (+ a b) (+ sum (if (even? b) b 0)   )    )
+        )
     )
 )
