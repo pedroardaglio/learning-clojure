@@ -13,7 +13,7 @@
         (cond
             (= a b) true
             (= (mod a b) 0) false
-            :else (is_prime? a (+ b 1))
+            :else (recur a (+ b 1))
         )
     )
 )
@@ -22,20 +22,18 @@
 (defn next_prime [n]
     (if (is_prime? (+ 1 n))
         (+ 1 n)
-        (next_prime (+ 1 n))
+        (recur (+ 1 n))
     )
 )
 
+
 (defn factor
-    ([n]
-        (loop [x n max_factor 1]
-            (let [new_factor (next_prime max_factor)]
-                (cond
-                    (= n new_factor) new_factor
-                    (= (mod n new_factor) 0) (recur (/ n new_factor) new_factor)
-                    :else (recur n new_factor)
-                )
-            )
+    ([n] (factor n 1))
+    ([n max_factor]
+        (cond
+            (= n (next_prime max_factor)) (next_prime max_factor)
+            (= (mod n (next_prime max_factor)) 0) (recur (/ n (next_prime max_factor)) max_factor)
+            :else (recur n (next_prime max_factor))
         )
     )
 )
